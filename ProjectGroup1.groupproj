@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{CE415A2D-1DA4-466A-B462-F6187180BF7F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BFProject.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\Users\ildar\Documents\Embarcadero\Studio\Projects\MultiPanel.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BFProject">
+        <MSBuild Projects="BFProject.dproj"/>
+    </Target>
+    <Target Name="BFProject:Clean">
+        <MSBuild Projects="BFProject.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BFProject:Make">
+        <MSBuild Projects="BFProject.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MultiPanel">
+        <MSBuild Projects="C:\Users\ildar\Documents\Embarcadero\Studio\Projects\MultiPanel.dproj"/>
+    </Target>
+    <Target Name="MultiPanel:Clean">
+        <MSBuild Projects="C:\Users\ildar\Documents\Embarcadero\Studio\Projects\MultiPanel.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MultiPanel:Make">
+        <MSBuild Projects="C:\Users\ildar\Documents\Embarcadero\Studio\Projects\MultiPanel.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BFProject;MultiPanel"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BFProject:Clean;MultiPanel:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BFProject:Make;MultiPanel:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
